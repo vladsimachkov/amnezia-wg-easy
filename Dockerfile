@@ -39,7 +39,11 @@ RUN apk add --no-cache \
     npm
 
 # Use iptables-legacy
-RUN update-alternatives --install /sbin/iptables iptables /sbin/iptables-legacy 10 --slave /sbin/iptables-restore iptables-restore /sbin/iptables-legacy-restore --slave /sbin/iptables-save iptables-save /sbin/iptables-legacy-save
+#RUN update-alternatives --install /sbin/iptables iptables /sbin/iptables-legacy 10 --slave /sbin/iptables-restore iptables-restore /sbin/iptables-legacy-restore --slave /sbin/iptables-save iptables-save /sbin/iptables-legacy-save
+# Use iptables-legacy
+RUN update-alternatives --install /sbin/iptables iptables /sbin/iptables-legacy 10 \
+  --slave /sbin/iptables-restore iptables-restore /sbin/iptables-legacy-restore \
+  --slave /sbin/iptables-save iptables-save /sbin/iptables-legacy-save
 
 # Set Environment
 ENV DEBUG=Server,WireGuard
